@@ -142,7 +142,7 @@ class VCNewsAnalyzer:
             print("⚠ prompts.json not found, using default prompt")
             return {
                 "original": {
-                    "prompt": "Analyze the following VC and startup news items and identify potential investment or business opportunities.\n\nFor each item, determine:\n1. Is this a significant opportunity? (YES/NO)\n2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)\n3. Key insights and takeaways (3-4 sentences): What is this about? Why does it matter? What are the main talking points someone should know?\n\nContent to analyze:\n{content_summary}\n\nRespond in JSON format for each item:\n{{\n    \"item_1\": {{\n        \"is_opportunity\": true/false,\n        \"opportunity_type\": \"type\",\n        \"explanation\": \"clear summary with key insights and takeaways\"\n    }},\n    ...\n}}",
+                    "prompt": "Analyze the following VC and startup news items and identify potential investment or business opportunities.\n\nFor each item, determine:\n1. Is this a significant opportunity? (YES/NO)\n2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)\n3. Key insights (3-4 punchy bullet points): What is this about? Why does it matter? What should people know?\n\nContent to analyze:\n{content_summary}\n\nRespond in JSON format for each item:\n{{\n    \"item_1\": {{\n        \"is_opportunity\": true/false,\n        \"opportunity_type\": \"type\",\n        \"explanation\": \"• Key point 1\\n• Key point 2\\n• Key point 3\\n• Key point 4\"\n    }},\n    ...\n}}",
                     "emoji": "🚀"
                 }
             }
@@ -477,7 +477,7 @@ class VCNewsAnalyzer:
 For each item, determine:
 1. Is this a significant opportunity? (YES/NO)
 2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)
-3. Key insights and takeaways (3-4 sentences): What is this about? Why does it matter? What are the main talking points someone should know?
+3. Key insights (3-4 punchy bullet points): What is this about? Why does it matter? What should people know?
 
 Content to analyze:
 {content_summary}
@@ -487,7 +487,7 @@ Respond in JSON format for each item:
     "item_1": {{
         "is_opportunity": true/false,
         "opportunity_type": "type",
-        "explanation": "clear summary with key insights and takeaways"
+        "explanation": "• Key point 1\\n• Key point 2\\n• Key point 3\\n• Key point 4"
     }},
     ...
 }}"""
