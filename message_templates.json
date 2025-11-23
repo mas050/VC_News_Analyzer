@@ -1,0 +1,38 @@
+{
+  "original": {
+    "template": "{emoji} *VC/Startup Opportunity Detected*\n\n*Source:* {source}\n*Title:* {title}\n\n*Type:* {opportunity_type}\n*Risk Level:* {risk_level}\n\n*Analysis:*\n{explanation}\n\n*Link:* {link}\n\n_Analyzed at {timestamp}_"
+  },
+  "funding_focus": {
+    "template": "{emoji} *Funding Round Alert*\n\n💰 *{title}*\n\n*Deal Type:* {opportunity_type}\n*Risk Assessment:* {risk_level}\n\n💡 *Investment Insight:*\n{explanation}\n\n🔗 [Read More]({link})\n\n_Source: {source} | {timestamp}_"
+  },
+  "growth_stage_emphasis": {
+    "template": "{emoji} *Startup Growth Signal*\n\n*{title}*\n\n🚀 *Stage:* {opportunity_type}\n⚠️ *Risk:* {risk_level}\n\n📊 *Strategic Analysis:*\n{explanation}\n\n📍 Source: {source}\n🔗 {link}\n\n_{timestamp}_"
+  },
+  "market_disruption": {
+    "template": "{emoji} *Disruption Alert*\n\n*{title}*\n\n⚡ *Disruption Type:* {opportunity_type}\n📉📈 *Risk Level:* {risk_level}\n\n🧠 *Market Impact:*\n{explanation}\n\n📱 Via: {source}\n🌐 {link}\n\n_Detected: {timestamp}_"
+  },
+  "trend_pattern": {
+    "template": "{emoji} *Emerging Trend Spotted*\n\n📈 *{title}*\n\n🔄 *Trend:* {opportunity_type}\n⚡ *Risk:* {risk_level}\n\n📖 *Trend Analysis:*\n{explanation}\n\n📌 {source}\n🔗 {link}\n\n_Analysis Time: {timestamp}_"
+  },
+  "sector_vertical": {
+    "template": "{emoji} *Vertical Opportunity*\n\n*{title}*\n\n🏗️ *Industry:* {opportunity_type}\n🎯 *Risk Level:* {risk_level}\n\n🔍 *Sector Breakdown:*\n{explanation}\n\n📡 Source: {source}\n🌐 [Full Story]({link})\n\n_{timestamp}_"
+  },
+  "exit_strategy": {
+    "template": "{emoji} *Exit Event Alert*\n\n*{title}*\n\n🎯 *Exit Type:* {opportunity_type}\n⚖️ *Risk:* {risk_level}\n\n💼 *Exit Analysis:*\n{explanation}\n\n📰 {source}\n🔗 {link}\n\n_Evaluated: {timestamp}_"
+  },
+  "founder_friendly": {
+    "template": "{emoji} *Founder Alert!*\n\n📰 *{title}*\n\n✨ *Opportunity:* {opportunity_type}\n🛡️ *Risk Factor:* {risk_level}\n\n📚 *Key Takeaway:*\n{explanation}\n\n👉 Source: {source}\n📖 [Learn More]({link})\n\n_Found: {timestamp}_"
+  },
+  "investor_technical": {
+    "template": "{emoji} *LP/GP Intelligence*\n\n`{title}`\n\n⚙️ *Deal Signal:* {opportunity_type}\n📊 *Risk Assessment:* {risk_level}\n\n🔧 *Investment Thesis:*\n{explanation}\n\n🗂️ Data: {source}\n🔗 {link}\n\n_Timestamp: {timestamp}_"
+  },
+  "ecosystem_impact": {
+    "template": "{emoji} *Ecosystem Shift*\n\n🌍 *{title}*\n\n🌐 *Impact Area:* {opportunity_type}\n⚠️ *Risk Level:* {risk_level}\n\n🗺️ *Ecosystem Implications:*\n{explanation}\n\n📍 {source}\n🔗 {link}\n\n_Detected: {timestamp}_"
+  },
+  "unicorn_watch": {
+    "template": "{emoji} *Unicorn Radar*\n\n🦄 *{title}*\n\n💎 *Milestone:* {opportunity_type}\n📊 *Risk Level:* {risk_level}\n\n✨ *Why This Matters:*\n{explanation}\n\n📰 Via: {source}\n🔗 [Full Details]({link})\n\n_Spotted: {timestamp}_"
+  },
+  "partnership_ma": {
+    "template": "{emoji} *Strategic Move Alert*\n\n🤝 *{title}*\n\n🎯 *Deal Type:* {opportunity_type}\n⚠️ *Risk:* {risk_level}\n\n💼 *Strategic Analysis:*\n{explanation}\n\n📍 {source}\n🔗 {link}\n\n_Reported: {timestamp}_"
+  }
+}
