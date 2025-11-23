@@ -114,7 +114,10 @@ class VCNewsAnalyzer:
             'This is going to be BIG': 'https://feeds.feedburner.com/thisisgoingtobebig',
             'Strictly Business Law Blog': 'https://www.strictlybusinesslawblog.com/feed/',
             'Both Sides of the Table': 'https://feeds.feedburner.com/Bothsidesofthetable',
-            'Neil Patel': 'https://neilpatel.com/feed/'
+            'Neil Patel': 'https://neilpatel.com/feed/',
+            'Obvious Ventures': 'https://obvious.com/feed',
+            'The Twenty Minute VC': 'https://rss.libsyn.com/shows/61840/destinations/240976.xml',
+            'Tank Talks': 'https://tanktalks.substack.com/feed'
         }
         
         # History tracking file
@@ -139,8 +142,8 @@ class VCNewsAnalyzer:
             print("⚠ prompts.json not found, using default prompt")
             return {
                 "original": {
-                    "prompt": "Analyze the following VC and startup news items and identify potential investment or business opportunities.\n\nFor each item, determine:\n1. Is this a significant opportunity? (YES/NO)\n2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)\n3. Risk level (LOW/MEDIUM/HIGH)\n4. Brief explanation (max 2 sentences)\n\nContent to analyze:\n{content_summary}\n\nRespond in JSON format for each item:\n{{\n    \"item_1\": {{\n        \"is_opportunity\": true/false,\n        \"opportunity_type\": \"type\",\n        \"risk_level\": \"LOW/MEDIUM/HIGH\",\n        \"explanation\": \"brief explanation\"\n    }},\n    ...\n}}",
-                    "emoji": "�"
+                    "prompt": "Analyze the following VC and startup news items and identify potential investment or business opportunities.\n\nFor each item, determine:\n1. Is this a significant opportunity? (YES/NO)\n2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)\n3. Key insights and takeaways (3-4 sentences): What is this about? Why does it matter? What are the main talking points someone should know?\n\nContent to analyze:\n{content_summary}\n\nRespond in JSON format for each item:\n{{\n    \"item_1\": {{\n        \"is_opportunity\": true/false,\n        \"opportunity_type\": \"type\",\n        \"explanation\": \"clear summary with key insights and takeaways\"\n    }},\n    ...\n}}",
+                    "emoji": "🚀"
                 }
             }
         except Exception as e:
@@ -158,7 +161,7 @@ class VCNewsAnalyzer:
             print("⚠ message_templates.json not found, using default template")
             return {
                 "original": {
-                    "template": "{emoji} *VC/Startup Opportunity Detected*\n\n*Source:* {source}\n*Title:* {title}\n\n*Type:* {opportunity_type}\n*Risk Level:* {risk_level}\n\n*Analysis:*\n{explanation}\n\n*Link:* {link}\n\n_Analyzed at {timestamp}_\n_Style: {style}_"
+                    "template": "{emoji} *VC/Startup Opportunity Detected*\n\n*Source:* {source}\n*Title:* {title}\n\n*Type:* {opportunity_type}\n\n*Key Insights:*\n{explanation}\n\n*Link:* {link}\n\n_Analyzed at {timestamp}_\n_Style: {style}_"
                 }
             }
         except Exception as e:
@@ -474,8 +477,7 @@ class VCNewsAnalyzer:
 For each item, determine:
 1. Is this a significant opportunity? (YES/NO)
 2. What type of opportunity? (funding round, new startup launch, market trend, technology breakthrough, partnership, acquisition, IPO, etc.)
-3. Risk level (LOW/MEDIUM/HIGH)
-4. Brief explanation (max 2 sentences)
+3. Key insights and takeaways (3-4 sentences): What is this about? Why does it matter? What are the main talking points someone should know?
 
 Content to analyze:
 {content_summary}
@@ -485,8 +487,7 @@ Respond in JSON format for each item:
     "item_1": {{
         "is_opportunity": true/false,
         "opportunity_type": "type",
-        "risk_level": "LOW/MEDIUM/HIGH",
-        "explanation": "brief explanation"
+        "explanation": "clear summary with key insights and takeaways"
     }},
     ...
 }}"""
@@ -571,7 +572,6 @@ Respond in JSON format for each item:
                 print(f"   Source: {opp['source']}")
                 if opp.get('ai_analysis'):
                     print(f"   Analysis: {opp['ai_analysis'].get('explanation', 'N/A')}")
-                    print(f"   Risk: {opp['ai_analysis'].get('risk_level', 'N/A')}")
             return
         
         if not opportunities:
@@ -606,7 +606,6 @@ Respond in JSON format for each item:
                             source=opp['source'],
                             title=opp['title'],
                             opportunity_type=analysis.get('opportunity_type', 'N/A'),
-                            risk_level=analysis.get('risk_level', 'N/A'),
                             explanation=analysis.get('explanation', 'No analysis available'),
                             link=opp.get('link', 'N/A'),
                             timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -624,9 +623,8 @@ Respond in JSON format for each item:
 *Title:* {opp['title']}
 
 *Type:* {analysis.get('opportunity_type', 'N/A')}
-*Risk Level:* {analysis.get('risk_level', 'N/A')}
 
-*Analysis:*
+*Key Insights:*
 {analysis.get('explanation', 'No analysis available')}
 
 *Link:* {opp.get('link', 'N/A')}

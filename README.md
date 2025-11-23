@@ -203,7 +203,37 @@ if current_hour >= 22 or current_hour < 7:  # 10 PM to 7 AM
 ```
 
 ### Add More RSS Feeds
-Edit lines 108-119 in `VC_News_Analyzer.py` to add feeds to the `self.rss_feeds` dictionary.
+
+Edit the `self.rss_feeds` dictionary in `VC_News_Analyzer.py` (lines 107-118):
+
+```python
+self.rss_feeds = {
+    'Crunchbase News': 'https://news.crunchbase.com/feed/',
+    'Above the Crowd': 'https://abovethecrowd.com/feed/',
+    # ... existing feeds ...
+    'Your New Feed Name': 'https://example.com/feed/',  # Add new feeds here
+}
+```
+
+**Format:**
+- `'Display Name': 'RSS Feed URL',`
+- Display Name: How it appears in Telegram posts
+- RSS Feed URL: The actual feed URL (usually ends in `/feed/`, `/rss/`, or `.xml`)
+- Don't forget the comma at the end (except for the last entry)
+
+**Finding RSS Feeds:**
+Most sites have RSS at `/feed/`, `/rss/`, `/feed.xml`, or look for the RSS icon 📡
+
+**After adding:**
+1. Save and commit: `git add VC_News_Analyzer.py && git commit -m "Add new RSS feed"`
+2. Push to GitHub: `git push origin main`
+3. Update on Raspberry Pi:
+   ```bash
+   cd ~/Python/VC_News_Analyzer
+   sudo systemctl stop vc-news-bot
+   git pull origin main
+   sudo systemctl start vc-news-bot
+   ```
 
 ## 📝 License
 

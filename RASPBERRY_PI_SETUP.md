@@ -151,7 +151,7 @@ sudo systemctl restart vc-news-bot
 ### View Real-Time Logs
 ```bash
 # Follow logs as they're written
-tail -f ~/VC_News_Analyzer/vc_news_bot.log
+tail -f ~/Python/VC_News_Analyzer/vc_news_bot.log
 
 # Or use journalctl
 sudo journalctl -u vc-news-bot -f
