@@ -184,11 +184,14 @@ sudo dphys-swapfile swapon
 
 ## 🎨 Customization
 
-### Change Posting Frequency
-Edit line 796 in `VC_News_Analyzer.py`:
+### Change Posting Schedule
+The bot runs at **7:00 AM, 12:00 PM, and 4:00 PM** daily. To change these times, edit lines 793-795 in `VC_News_Analyzer.py`:
 ```python
-schedule.every(1).hours.do(analyzer.run_workflow)  # Change 1 to desired hours
+schedule.every().day.at("07:00").do(analyzer.run_workflow)  # 7 AM
+schedule.every().day.at("12:00").do(analyzer.run_workflow)  # Noon
+schedule.every().day.at("16:00").do(analyzer.run_workflow)  # 4 PM
 ```
+Use 24-hour format (e.g., "09:30" for 9:30 AM, "18:00" for 6 PM)
 
 ### Adjust Posts Per Hour
 Edit line 753 in `VC_News_Analyzer.py`:

@@ -789,10 +789,12 @@ def main():
         except Exception as e:
             logger.error(f"Initial workflow failed: {str(e)}", exc_info=True)
         
-        # Schedule to run every hour (adjust as needed)
-        schedule.every(1).hours.do(analyzer.run_workflow)
+        # Schedule to run at specific times: 7am, noon, and 4pm
+        schedule.every().day.at("07:00").do(analyzer.run_workflow)
+        schedule.every().day.at("12:00").do(analyzer.run_workflow)
+        schedule.every().day.at("16:00").do(analyzer.run_workflow)
         
-        logger.info("Scheduler started. Running every 1 hour.")
+        logger.info("Scheduler started. Running at 7:00 AM, 12:00 PM, and 4:00 PM daily.")
         logger.info("Press Ctrl+C to stop.")
         
         # Keep the script running with error recovery
